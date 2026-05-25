@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chukwuemeka K. Onuoha — Electrical Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --accent: #e8c547;
+    --accent2: #4fc3f7;
+    --text: #f0eee8;
+    --muted: #7a7a8a;
+    --border: rgba(232,197,71,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #home::after {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232,197,71,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name span { color: var(--accent); }
+
+  .hero-title {
+    font-size: 1rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    margin-bottom: 2rem;
+    max-width: 36ch;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    color: rgba(240,238,232,0.7);
+    max-width: 42ch;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0f;
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover { background: #f0d05a; transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 2rem;
+    width: 3rem; height: 3px;
+    background: var(--accent);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat { padding: 1rem; background: var(--surface2); }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .hero-card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 3rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── RESUME ── */
+  #resume { background: var(--surface); }
+
+  .resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .resume-block { margin-bottom: 2.5rem; }
+
+  .resume-block-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .resume-item { margin-bottom: 1.5rem; }
+
+  .resume-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .resume-item-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .resume-item-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .resume-item-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .resume-item-desc {
+    font-size: 0.85rem;
+    color: rgba(240,238,232,0.65);
+    line-height: 1.6;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.25s, border-color 0.25s;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover { transform: translateY(-4px); border-color: rgba(232,197,71,0.3); }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--surface2);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: rgba(240,238,232,0.6);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--surface); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+  }
+
+  .skill-group-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-list li {
+    font-size: 0.87rem;
+    color: rgba(240,238,232,0.75);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .skill-list li::before {
+    content: '›';
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { background: var(--bg); }
+
+  .achievements-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .achievement-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem;
+  }
+
+  .achievement-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .achievement-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .achievement-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--surface);
+    text-align: center;
+    padding: 7rem 3rem;
+  }
+
+  #contact .section-label { justify-content: center; }
+  #contact .section-label::after { display: none; }
+
+  .contact-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 40ch;
+    margin: 0 auto 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    #home { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero-right { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .resume-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">CKO_PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#achievements">Activities</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Electrical Engineering Student</div>
+    <h1 class="hero-name">
+      Chukwuemeka<br><span>K. Onuoha</span>
+    </h1>
+    <p class="hero-title">B.S. Electrical Engineering · Saint Louis University · Class of 2027</p>
+    <p class="hero-bio">
+      Bridging technical ability, leadership, and human impact — from circuit design and embedded systems to research in accessible technology. Building systems that matter.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <p class="hero-card-title">// At a Glance</p>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years Engineering</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Leadership Roles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Internships & Research</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2027</div>
+          <div class="stat-label">Graduation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="section-label">02 — Resume & Education</div>
+  <h2 class="section-heading">Background &<br>Experience</h2>
+
+  <div style="margin-bottom: 2rem;">
+    <a href="mailto:ckonuoha05@gmail.com" class="btn-primary" style="font-size:0.8rem;">
+      ↓ Request Resume PDF
+    </a>
+  </div>
+
+  <div class="resume-grid fade-up">
+    <div>
+      <div class="resume-block">
+        <div class="resume-block-title">// Education</div>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Saint Louis University</span>
+            <span class="resume-item-date">2023 — 2027</span>
+          </div>
+          <div class="resume-item-sub">B.S. Electrical Engineering · Minor: Engineering Mathematics</div>
+          <div class="resume-item-desc">Relevant coursework: Circuit Analysis, Differential Equations, Calculus, Discrete Mathematics, Thermodynamics, Python Programming.</div>
+        </div>
+      </div>
+
+      <div class="resume-block">
+        <div class="resume-block-title">// Experience</div>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Electrical Engineering Intern</span>
+            <span class="resume-item-date">2024</span>
+          </div>
+          <div class="resume-item-sub">Crawford, Murphy & Tilly</div>
+          <div class="resume-item-desc">Worked on real-world electrical design projects — NEC-compliant load calculations, lighting systems, transformers, panels, and HVAC loads using AutoCAD, Revit, AGi32, and Visual.</div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Undergraduate Researcher</span>
+            <span class="resume-item-date">Ongoing</span>
+          </div>
+          <div class="resume-item-sub">Saint Louis University</div>
+          <div class="resume-item-desc">Developing an Android-based application for adaptive audio-haptic feedback systems for visually impaired users. Combines software development, vibration/haptic systems, and accessibility research.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="resume-block">
+        <div class="resume-block-title">// Campus Roles</div>
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Residential Advisor</span>
+            <span class="resume-item-date">Current</span>
+          </div>
+          <div class="resume-item-sub">Saint Louis University Housing</div>
+          <div class="resume-item-desc">Oversee wellbeing and safety of 30–35 residents. Mediate conflicts, respond to emergencies, and maintain a supportive living environment.</div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Rec Center Specialist & Intramural Referee</span>
+            <span class="resume-item-date">Current</span>
+          </div>
+          <div class="resume-item-sub">SLU Campus Recreation</div>
+          <div class="resume-item-desc">Maintain safe recreational environments, enforce rules, manage conflicts, and ensure participant safety in competitive settings.</div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-item-header">
+            <span class="resume-item-title">Billiken Engagement Center Agent</span>
+            <span class="resume-item-date">Current</span>
+          </div>
+          <div class="resume-item-sub">Saint Louis University</div>
+          <div class="resume-item-desc">Alumni outreach campaigns supporting fundraising and engagement efforts. Strengthened professional communication and relationship-building skills.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">03 — Projects</div>
+  <h2 class="section-heading">Engineering<br>Work</h2>
+
+  <div class="projects-grid">
+    <div class="project-card fade-up">
+      <div class="project-num">01</div>
+      <div class="project-title">Adaptive Audio-Haptic Feedback System</div>
+      <div class="project-desc">Android application designed for visually impaired users, integrating adaptive audio cues and vibration-based haptic feedback to improve navigation and interaction. Focuses on human-centered engineering and accessibility.</div>
+      <div class="project-tags">
+        <span class="tag">Android</span>
+        <span class="tag">Haptic Systems</span>
+        <span class="tag">Accessibility</span>
+        <span class="tag">Java</span>
+        <span class="tag">UX Research</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">02</div>
+      <div class="project-title">Electrical Design — Infrastructure Project</div>
+      <div class="project-desc">Professional-grade electrical schematics and NEC-compliant load calculations for building infrastructure. Involved lighting system design, transformer and panel sizing, and HVAC load analysis during internship at Crawford, Murphy & Tilly.</div>
+      <div class="project-tags">
+        <span class="tag">AutoCAD</span>
+        <span class="tag">Revit</span>
+        <span class="tag">AGi32</span>
+        <span class="tag">NEC Compliance</span>
+        <span class="tag">Load Calc</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">03</div>
+      <div class="project-title">Circuit Analysis Projects</div>
+      <div class="project-desc">Academic lab work involving DC/AC circuit design, analysis, and simulation. Applied Kirchhoff's laws, Thevenin/Norton equivalents, and frequency response analysis using industry-standard simulation tools.</div>
+      <div class="project-tags">
+        <span class="tag">SPICE</span>
+        <span class="tag">Circuit Design</span>
+        <span class="tag">AC/DC Analysis</span>
+        <span class="tag">Oscilloscope</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">04</div>
+      <div class="project-title">Python Engineering Scripts</div>
+      <div class="project-desc">Developed Python scripts for data analysis, numerical methods, and problem-solving in engineering mathematics. Covers differential equations solvers, signal processing utilities, and automation scripts for engineering workflows.</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Automation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">04 — Technical Skills</div>
+  <h2 class="section-heading">Tools &<br>Technologies</h2>
+
+  <div class="skills-grid fade-up">
+    <div class="skill-group">
+      <div class="skill-group-title">⚡ Software & CAD</div>
+      <ul class="skill-list">
+        <li>AutoCAD</li>
+        <li>Revit</li>
+        <li>AGi32</li>
+        <li>Visual (lighting software)</li>
+        <li>SPICE / LTspice</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">💻 Programming</div>
+      <ul class="skill-list">
+        <li>Python</li>
+        <li>Java (Android)</li>
+        <li>MATLAB (intro)</li>
+        <li>C (fundamentals)</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">🔧 Hardware & Lab</div>
+      <ul class="skill-list">
+        <li>Oscilloscopes</li>
+        <li>Digital Multimeters</li>
+        <li>Function Generators</li>
+        <li>Breadboard Prototyping</li>
+        <li>Haptic / Vibration Systems</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">📐 Engineering Skills</div>
+      <ul class="skill-list">
+        <li>Circuit Analysis</li>
+        <li>NEC Load Calculations</li>
+        <li>Electrical Schematics</li>
+        <li>Lighting System Design</li>
+        <li>Technical Documentation</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">📚 Mathematics</div>
+      <ul class="skill-list">
+        <li>Differential Equations</li>
+        <li>Calculus I–III</li>
+        <li>Discrete Mathematics</li>
+        <li>Linear Algebra</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">🤝 Professional</div>
+      <ul class="skill-list">
+        <li>Technical Collaboration</li>
+        <li>Engineering Documentation</li>
+        <li>Event Coordination</li>
+        <li>Conflict Resolution</li>
+        <li>Public Communication</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">05 — Activities & Leadership</div>
+  <h2 class="section-heading">Organizations &<br>Achievements</h2>
+
+  <div class="achievements-list fade-up">
+    <div class="achievement-item">
+      <div class="achievement-category">IEEE Student Chapter</div>
+      <div class="achievement-title">Event Coordinator</div>
+      <div class="achievement-desc">Coordinate technical talks, outreach programs, and professional development events encouraging student engagement and collaboration in the engineering community.</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-category">Campus Recreation</div>
+      <div class="achievement-title">Ping Pong Club President</div>
+      <div class="achievement-desc">Oversee club operations, organize practices and tournaments, manage recruitment, and coordinate with university leadership and executive board members.</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-category">Residential Life</div>
+      <div class="achievement-title">Residential Advisor</div>
+      <div class="achievement-desc">Selected to mentor and support 30–35 residents. Trained in emergency response, conflict mediation, and community building within a university residential setting.</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-category">Undergraduate Research</div>
+      <div class="achievement-title">Haptic Accessibility Research</div>
+      <div class="achievement-desc">Contributing to research on audio-haptic feedback systems for visually impaired users, combining software development, experimental design, and human-centered engineering principles.</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-category">Professional Internship</div>
+      <div class="achievement-title">Crawford, Murphy & Tilly</div>
+      <div class="achievement-desc">Gained hands-on experience in professional engineering workflows — electrical schematics, compliant load calculations, and infrastructure design using industry-standard tools.</div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-category">International Background</div>
+      <div class="achievement-title">Nigeria → United States</div>
+      <div class="achievement-desc">Relocated internationally to pursue an engineering degree, balancing academics, leadership, and financial responsibilities while consistently excelling across multiple demanding roles.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">07 — Contact</div>
+  <h2 class="contact-heading">Let's Connect</h2>
+  <p class="contact-sub">Open to internships, research collaborations, and engineering opportunities. Feel free to reach out.</p>
+  <div class="contact-links">
+    <a href="mailto:ckonuoha05@gmail.com" class="btn-primary">ckonuoha05@gmail.com</a>
+    <a href="https://www.linkedin.com/in/chukwuemeka-k-onuoha-84b515251/" target="_blank" class="btn-outline">LinkedIn ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Chukwuemeka K. Onuoha</span>
+  <span>EE Student · Saint Louis University</span>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
